@@ -12,7 +12,8 @@ export default function ChatRoomitem(props) {
   const openModal = () => setIsOpen(true);
 
   const handleDelete = () => {
-   
+   props.deleteRoom(room.id);
+   props.updateRoom(room.id);
     // call a function from app to delete a room (pass room.id as a parameter)
   };
   return (
@@ -31,10 +32,10 @@ export default function ChatRoomitem(props) {
         </div>
       </Link>
 
-      <Button className="delete" onClick={handleDelete}>
+      <Button className="delete" onClick={handleDelete}room={room}>
         Delete
       </Button>
-      <Button className="delete" onClick={openModal}>
+      <Button className="delete" onClick={openModal} room={room}>
         Update
       </Button>
       <UpdateRoomModal isOpen={isOpen} closeModal={closeModal} room={room} />
